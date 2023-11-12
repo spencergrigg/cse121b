@@ -5,7 +5,7 @@
 /* Step 2 - Variables */
 fullName = 'Spencer Grigg';
 let currentYear = '2023';
-let profilePicture = 'images/profilePhoto.jpg';
+let profilePicture = 'images/spencePhoto.jpg';
 
 /* Step 3 - Element Variables */
 const nameElement = document.getElementById('name');
