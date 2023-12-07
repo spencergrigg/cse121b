@@ -6,22 +6,25 @@ let templeList = [];
 
 /* async displayTemples Function */
 const displayTemples = (temples) => {
- 
+  reset()
 
-    templeList.forEach((temples) => {
-       
-    let article = document.createElement('article');
-    let h3 = document.createElement('h3');
-    let img = document.createElement('img');
-    h3.textContent = temples.templeName;
-    img.src.setAttribute = ('src', temples.imageUrl);
-    img.alt.setAttribute = ('alt', temples.location);
-    img.appendChild(document.querySelector('img'));
-    article.appendChild(h3);
-    article.appendChild(img);
-    templesElement.appendChild(article);
-   
+  temples.forEach(temple => {
+     
+  const article = document.createElement('article');
+  const h3 = document.createElement('h3');
+  const img = document.createElement('img');
+  
+  h3.textContent = temple.templeName;
+  img.src = temple.imageUrl;
+  img.alt = temple.location;
+  
+
+  article.appendChild(img);
+  article.appendChild(h3);
+  templesElement.appendChild(article);
+ 
 })
+
 };
 
 
@@ -29,9 +32,9 @@ const displayTemples = (temples) => {
 const getTemples = async () => {
     const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json");
     if (response.ok) {
-        const data = await response.json();
-        templeList.push(response);
-        getTemples(templeList);
+        templeList = await response.json();
+        console.log(JSON.stringify(templeList));
+        displayTemples(templeList);
     };
 };
 
